@@ -1,0 +1,60 @@
+# ***** 404 error redirect *****
+
+ErrorDocument 404 http://www.shannonlawlor.com/404.html
+
+
+# ***** forward domain.com to www.domain.com *****
+
+RewriteEngine on
+rewritecond %{http_host} ^shannonlawlor.com [nc]
+rewriterule ^(.*)$ http://www.shannonlawlor.com/$1 [r=301,nc]
+
+
+# ***** prevent image hotlinking *****
+
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?shannonlawlor.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif)$ - [NC,F,L]
+
+
+# ***** 301 redirect *****
+# ***** Sample /oldfolder/originalfile.html -----> http://www.newdomain.com/newfolder/index.html
+
+
+
+Redirect permanent /original_art1.html http://www.shannonlawlor.com/equine.html
+Redirect permanent /original_art2.html http://www.shannonlawlor.com/equine.html
+Redirect permanent /original_art3.html http://www.shannonlawlor.com/equine.html
+Redirect permanent /original_art4.html http://www.shannonlawlor.com/equine.html
+Redirect permanent /original_art5.html http://www.shannonlawlor.com/equine.html
+Redirect permanent /original_art6.html http://www.shannonlawlor.com/equine.html
+Redirect permanent /original_art7.html http://www.shannonlawlor.com/equine.html
+Redirect permanent /original_art8.html http://www.shannonlawlor.com/equine.html
+
+
+
+
+Redirect permanent /bio_news1.html http://www.shannonlawlor.com/biography.html
+Redirect permanent /bio_news2.html http://www.shannonlawlor.com/biography.html
+
+
+Redirect permanent /events.html http://www.shannonlawlor.com/art-shows.html
+
+Redirect permanent /giclee_prints.html http://www.shannonlawlor.com/fine-art.html
+Redirect permanent /giclee_prints2.html http://www.shannonlawlor.com/fine-art.html
+Redirect permanent /giclee_prints3.html http://www.shannonlawlor.com/fine-art.html
+Redirect permanent /giclee_prints4.html http://www.shannonlawlor.com/fine-art.html
+
+Redirect permanent /in_collections.html http://www.shannonlawlor.com/fine-art.html
+Redirect permanent /in_collections2.html http://www.shannonlawlor.com/fine-art.html
+Redirect permanent /in_collections3.html http://www.shannonlawlor.com/fine-art.html
+Redirect permanent /in_collections4.html http://www.shannonlawlor.com/fine-art.html
+Redirect permanent /in_collections5.html http://www.shannonlawlor.com/fine-art.html
+Redirect permanent /in_collections6.html http://www.shannonlawlor.com/fine-art.html
+
+Redirect permanent /awards_media1.html http://www.shannonlawlor.com/media.html
+Redirect permanent /awards_media2.html http://www.shannonlawlor.com/media.html
+Redirect permanent /awards_media3.html http://www.shannonlawlor.com/media.html
+Redirect permanent /awards_media4.html http://www.shannonlawlor.com/media.html
+Redirect permanent /awards_media5.html http://www.shannonlawlor.com/media.html

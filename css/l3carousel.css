@@ -1,0 +1,112 @@
+html.with-gallery,
+html.with-gallery body {
+  margin: 0 0;
+  padding: 0 0;
+}
+html.with-gallery body {
+  background-color: #000;
+  color: #eee;
+}
+html.with-gallery .row .columns {
+  padding: 0 0;
+}
+.l3c-wrapper {
+  display: block;
+  margin: 0 0;
+  padding: 0 0;
+  position: relative;
+}
+.l3c {
+  height: 100%;
+  list-style: none;
+  margin: 0 0;
+  padding: 0 0;
+  position: relative;
+  width: 100%;
+}
+.l3c-itemWrapper {
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.l3c-itemWrapper:first-child {
+  display: list-item;
+}
+.l3c-item {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+.l3c-mainImage {
+  border: 2px solid #fff;
+  display: block;
+  margin: 0 auto;
+}
+.rs-caption {
+  display: block;
+}
+.l3c-mainImageControls,
+.l3c-thumbnailsControls {
+  background: url(../img/arrows.png) no-repeat;
+  height: 45px;
+  left: 0;
+  margin-top: -10px;
+  overflow: hidden;
+  text-indent: 100px;
+  top: 35%;
+  position: absolute;
+  width: 45px;
+  z-index: 5;
+}
+.l3c-mainImageControls.l3c-next,
+.l3c-thumbnailsControls.l3c-next {
+  left: auto;
+  right: 0;
+  background-position: -45px;
+}
+
+.l3c-thumbnailsWrapper {
+  bottom: 0;
+  height: 79px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.l3c-thumbnailsWrapper ul {
+  list-style: none;
+  margin: 0 0;
+  padding: 0 0;
+  text-align: center;
+}
+.l3c-thumbnails {
+  display: inline-block;
+  position: relative;
+}
+.l3c-thumbnailsWrapper ul li {
+  float: left;
+  padding: 0 2px;
+}
+.l3c-thumbnailsWrapper li:first-child {
+  padding-left: 0;
+}
+.l3c-thumbnailsWrapper li:last-child {
+  padding-right: 0;
+}
+.l3c-thumbnailsItem {
+  border: 2px solid #fff;
+  display: block;
+  height: 75px;
+  opacity: 0.5;
+}
+.l3c-thumbnailsItem:hover,
+.l3c-active .l3c-thumbnailsItem {
+  opacity: 1;
+}
+.rs-caption {
+  padding: 5px 0;
+}
