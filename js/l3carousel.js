@@ -26,10 +26,18 @@
       classMainImageControls: classPrefix + "mainImageControls",
       classNext: classPrefix + "next",
       classPrevious: classPrefix + "prev",
+      classPlayPause: classPrefix + "playpause",
+      classPlay: classPrefix + "play",
+      classPause: classPrefix + "pause",
 
       controlsShow: true,
-      controlsNextContent: "next",
-      controlsPreviousContent: "prev",
+      controlsNextContent: "Next",
+      controlsPreviousContent: "Previous",
+      controlsThumbnailsShow: true,
+
+      controlsPausePlayShow: false,
+      controlsPlayContent: "Play",
+      controlsPauseContent: "Pause",
 
       thumbnailsShow: true,
 
@@ -53,6 +61,9 @@
       if (carousel.settings.controlsShow) {
         CreateMainImageControls();
       }
+      if (carousel.settings.controlsPausePlayShow) {
+        CreatePausePlayButton();
+      }
       if (carousel.settings.thumbnailsShow) {
         CreateThumbnails();
       }
@@ -72,6 +83,10 @@
       var nextObjectIndex = (currentObjectIndex+1 == animateObjectsCount ? 0 : currentObjectIndex+1);
       AnimateToPosition(currentObjectIndex, nextObjectIndex);
     };
+    var StopAnimate = function () {
+      carousel.$itemsToAnimate.stop(true, true);
+      clearTimeout(carousel.animationTimeout);
+    };
     var AnimateToPosition = function (fromIndex, toIndex) {
       clearTimeout(carousel.animationTimeout);
       carousel.$itemsToAnimate.stop(true, true);
@@ -83,12 +98,11 @@
 
       $itemFrom.fadeOut(carousel.settings.animationDuration, function(){
         $itemTo.fadeIn(carousel.settings.animationDuration, function(){
-            if (carousel.settings.autoScroll) {
-              clearTimeout(carousel.animationTimeout);
-              carousel.animationTimeout = setTimeout(AutoAnimate, carousel.settings.animationDelay);
-            }
+          if (carousel.settings.autoScroll) {
+            clearTimeout(carousel.animationTimeout);
+            carousel.animationTimeout = setTimeout(AutoAnimate, carousel.settings.animationDelay);
           }
-        );
+        });
       });
       if (carousel.settings.thumbnailsShow) {
         SetActiveThumbnail(toIndex);
@@ -144,10 +158,12 @@
         var $thumbnails = $thumbnailsWrapper.find('.'+carousel.settings.classThumbnails);
         thumbnailsHeight = parseInt($thumbnailsWrapper.outerHeight(), 10);
         paddingBottom = paddingBottom+thumbnailsHeight;
-        if (parseInt($thumbnails.width(), 10) > parseInt($thumbnailsWrapper.width(), 10)) {
-          CreateThumbnailsControls($thumbnails);
-        } else {
-          RemoveThumbnailsControls($thumbnails);
+        if (carousel.settings.controlsThumbnailsShow) {
+          if (parseInt($thumbnails.width(), 10) > parseInt($thumbnailsWrapper.width(), 10)) {
+            CreateThumbnailsControls($thumbnails);
+          } else {
+            RemoveThumbnailsControls($thumbnails);
+          }
         }
       }
 
@@ -196,9 +212,32 @@
     };
 
     var CreateMainImageControls = function () {
-      $('<a href="#" class="'+carousel.settings.classMainImageControls+' '+carousel.settings.classNext+'">'+carousel.settings.controlsNextContent+'</a>').insertBefore(carousel);
-      $('<a href="#" class="'+carousel.settings.classMainImageControls+' '+carousel.settings.classPrevious+'">'+carousel.settings.controlsPreviousContent+'</a>').insertAfter(carousel);
+      $('<a href="#" class="'+carousel.settings.classMainImageControls+' '+carousel.settings.classNext+'" title="'+carousel.settings.controlsNextContent+'">'+carousel.settings.controlsNextContent+'</a>').insertBefore(carousel);
+      $('<a href="#" class="'+carousel.settings.classMainImageControls+' '+carousel.settings.classPrevious+'" title="'+carousel.settings.controlsPreviousContent+'">'+carousel.settings.controlsPreviousContent+'</a>').insertAfter(carousel);
       carousel.parent().find('.'+carousel.settings.classMainImageControls).on('click', HandleMainImageControls);
+    };
+    var CreatePausePlayButton = function () {
+      var currentClass = carousel.settings.classPlay;
+      var currentText = carousel.settings.controlsPlayContent;
+      if (carousel.settings.autoScroll) {
+        currentClass = carousel.settings.classPause;
+        currentText = carousel.settings.controlsPauseContent;
+      }
+      $('<a href="#" title="'+currentText+'" class="'+carousel.settings.classPlayPause+' '+currentClass+'">'+currentText+'</a>').insertBefore(carousel);
+      carousel.parent().find('.'+carousel.settings.classPlayPause).on('click', HandlePlayPauseControls);
+    };
+
+    var HandlePlayPauseControls = function (event) {
+      if ($(this).hasClass(carousel.settings.classPause)) {
+        $(this).removeClass(carousel.settings.classPause).addClass(carousel.settings.classPlay).text(carousel.settings.controlsPlayContent).attr("title", carousel.settings.controlsPlayContent);
+        carousel.settings.autoScroll = false;
+        StopAnimate();
+      } else {
+        $(this).removeClass(carousel.settings.classPlay).addClass(carousel.settings.classPause).text(carousel.settings.controlsPauseContent).attr("title", carousel.settings.controlsPauseContent);
+        carousel.settings.autoScroll = true;
+        carousel.animationTimeout = setTimeout(AutoAnimate, carousel.settings.animationDelay);
+      }
+      event.preventDefault();
     };
     var HandleMainImageControls = function (event) {
       var animateObjectsCount = carousel.$itemsToAnimate.length;

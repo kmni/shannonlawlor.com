@@ -70,7 +70,7 @@
             <input type="hidden" name="hosted_button_id" value="L8WQKBNJ8WLMC">
             <input type="image" src="http://shannonlawlor.com/img/purchase.gif" border="0" name="submit">
           </form>
-        </span> 
+        </span>
       </div>
     </li>
 
@@ -82,7 +82,7 @@
             <input type="hidden" name="hosted_button_id" value="JR57ENABMSAAY">
             <input type="image" src="http://shannonlawlor.com/img/purchase.gif" border="0" name="submit">
           </form>
-        </span> 
+        </span>
       </div>
     </li>
 
@@ -106,7 +106,7 @@
             <input type="hidden" name="hosted_button_id" value="GV3P2SDGVRMKG">
             <input type="image" src="http://shannonlawlor.com/img/purchase.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
           </form>
-        </span> 
+        </span>
       </div>
     </li>
 
@@ -119,7 +119,7 @@
             <input type="hidden" name="hosted_button_id" value="M6Z3KUQD5NZ2S">
             <input type="image" src="http://shannonlawlor.com/img/purchase.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
           </form>
-        </span> 
+        </span>
       </div>
     </li>
 
@@ -171,7 +171,7 @@
           <input type="hidden" name="hosted_button_id" value="K6TFYVQ9R5SWW">
           <input type="image" src="http://shannonlawlor.com/img/purchase.gif" border="0" name="submit" >
           </form>
-        </span> 
+        </span>
     </div>
     </li>
 
@@ -206,7 +206,9 @@
   $(document).ready(function(){
      $(".carousel").l3Carousel({
        classDescription: "rs-caption",
-       elementsInvolvedHeightSelector: "#header, .footer"
+       elementsInvolvedHeightSelector: "#header, .footer",
+       controlsPausePlayShow: true,
+       controlsThumbnailsShow: false
      });
   });
 </script>
@@ -220,12 +222,12 @@
 <script>
 document.onmousedown=disableclick;
 status="Right Click Disabled";
-Function disableclick(e)
+function disableclick(e)
 {
   if(event.button==2)
    {
      alert(status);
-     return false;    
+     return false;
    }
 }
 </script>

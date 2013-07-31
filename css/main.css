@@ -131,12 +131,6 @@ body#splash, #splash-container{
 body .l3c-wrapper{
 	margin:0 300px;
 }
-body .l3c-mainImageControls.l3c-next{
-	right:-300px;
-}
-body .l3c-mainImageControls.l3c-prev {
-	left:-300px;
-}
 #header{
 	margin-top:0px;
 }

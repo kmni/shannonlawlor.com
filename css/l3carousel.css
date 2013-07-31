@@ -50,7 +50,7 @@ html.with-gallery .row .columns {
 }
 .l3c-mainImageControls,
 .l3c-thumbnailsControls {
-  background: url(../img/arrows.png) no-repeat;
+  background: transparent url(../img/arrows.gif) no-repeat;
   height: 45px;
   left: 0;
   margin-top: -10px;
@@ -61,7 +61,35 @@ html.with-gallery .row .columns {
   width: 45px;
   z-index: 5;
 }
-.l3c-mainImageControls.l3c-next,
+.l3c-mainImageControls,
+.l3c-playpause {
+  bottom: -55px;
+  left: 50%;
+  top: auto;
+}
+.l3c-mainImageControls.l3c-next {
+  background-position: -45px top;
+  margin-left: 24px;
+}
+.l3c-mainImageControls.l3c-prev {
+  margin-left: -70px;
+}
+.l3c-playpause {
+  background: transparent url("../img/pause-play.gif") no-repeat;
+  display: block;
+  height: 45px;
+  margin-left: -23px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 100px;
+  width: 45px;
+}
+.l3c-play {
+  background-position: left -45px;
+}
+.l3c-pause {
+  background-position: left top;
+}
 .l3c-thumbnailsControls.l3c-next {
   left: auto;
   right: 0;
