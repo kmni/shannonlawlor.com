@@ -158,7 +158,9 @@
   $(document).ready(function(){
      $(".carousel").l3Carousel({
        classDescription: "rs-caption",
-       elementsInvolvedHeightSelector: "#header, .footer"
+       elementsInvolvedHeightSelector: "#header, .footer",
+       controlsPausePlayShow: true,
+       controlsThumbnailsShow: false
      });
   });
 </script>
@@ -177,7 +179,7 @@ Function disableclick(e)
   if(event.button==2)
    {
      alert(status);
-     return false;    
+     return false;
    }
 }
 </script>

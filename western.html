@@ -64,7 +64,7 @@
 
     <li><img src="img/sold/chino.jpg" width="603" height="800"/>
       <div class="rs-caption rs-bottom"> Chino <span>48" x 36" acrylic</span></div>
-    </li>  
+    </li>
 
     <li><img src="img/western/alamar-knot.jpg" width="521" height="800"/>
       <div class="rs-caption rs-bottom"> ALAMAR KNOT <span>9" x 6" acrylic</span><span><a href="contact.html">Inquire to purchase</a></span> </div>
@@ -118,7 +118,9 @@
   $(document).ready(function(){
      $(".carousel").l3Carousel({
        classDescription: "rs-caption",
-       elementsInvolvedHeightSelector: "#header, .footer"
+       elementsInvolvedHeightSelector: "#header, .footer",
+       controlsPausePlayShow: true,
+       controlsThumbnailsShow: false
      });
   });
 </script>
@@ -137,7 +139,7 @@ Function disableclick(e)
   if(event.button==2)
    {
      alert(status);
-     return false;    
+     return false;
    }
 }
 </script>
